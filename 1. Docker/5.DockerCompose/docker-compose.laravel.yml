@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  laravel:
+    build: 
+      context: ./1.laravel
+      dockerfile: Dockerfile
+    image: petrovick/laravel:prod
+    container_name: laravel
+    networks:
+      - laranet
+  
+  nginx:
+    build: 
+      context: ./2.NginxProxyReverso
+      dockerfile: Dockerfile.prod
+    image: petrovick/nginx:prod
+    container_name: nginx
+    networks:
+      - laranet
+    ports: 
+      - "8080:80"
+
+networks: 
+  laranet:
+    driver: bridge
