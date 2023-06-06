@@ -24,3 +24,11 @@ git flow feature finish welcome
 ```
 
 ### Gerando release
+
+```
+git flow release start 0.1.0
+```
+
+```
+git flow feature start contact
+```
