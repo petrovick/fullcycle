@@ -48,3 +48,31 @@ git config --global commit.gpgsign true
 git config --global tag.gpgSign true
 ```
 
+### Guarda sua senha GPG
+
+Para não precisar utilizar a senha para assinar a todo momento
+
+```
+echo 'use-agent' > ~/.gnupg/gpg.conf
+gpgconf --launch gpg-agent
+```
+
+## Adicionando outro email na chave
+
+```
+gpg --list-secret-key --keyid-form LONG
+```
+Pega Id do resultado acima
+
+```
+gpg --edit-key 1B323FF8BCDCEABEB2C54070002B30522531FA46
+
+gpg> adduid
+Real name: Wesley Willians
+Email address: wesley@schoolsofnet.com
+
+gpg> uid 2
+gpg> trust
+Your Decision?> 5
+gpg> save
+```
