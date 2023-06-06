@@ -32,3 +32,15 @@ git flow release start 0.1.0
 ```
 git flow feature start contact
 ```
+
+```
+git flow release finish 0.1.0
+```
+
+```
+git flow hotfix start contact
+```
+
+```
+git flow hotfix finish contact
+```
