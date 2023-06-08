@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  node-sonar:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    image: petrovick/node-sonar
+    container_name: node-sonar
+    networks:
+      - bridge
+    command: npm run test
+
+networks: 
+  bridge:
+    driver: bridge
