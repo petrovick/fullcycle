@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     name: node-server
     kind: Deployment
-  minReplicas: 1 # Em produção NUNCA utilizar 1, porque se cair essa replica o serviço fica fora
+  minReplicas: 2 # Em produção NUNCA utilizar 1, porque se cair essa replica o serviço fica fora
   maxReplicas: 30
   targetCPUUtilizationPercentage: 10
   # metrics:

@@ -26,10 +26,10 @@ spec:
           resources:
             requests: ## É o mínimo (reservado)
               cpu: "0.03"
-              memory: 20Mi
+              memory: 100Mi
             limits: ## É o máximo (limite máximo que pode ser reservado)
               cpu: "0.5"
-              memory: 25Mi
+              memory: 250Mi
 
           # FIM Resources
 
@@ -74,7 +74,6 @@ spec:
               readOnly: true
             - mountPath: "/pvc"
               name: node-server-volume
-              readOnly: true
 
       volumes:
         - name: node-server-volume
