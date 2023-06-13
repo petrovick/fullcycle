@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
         - name: node-server
-          image: petrovick/hello-node:v2
+          image: petrovick/hello-node:latest

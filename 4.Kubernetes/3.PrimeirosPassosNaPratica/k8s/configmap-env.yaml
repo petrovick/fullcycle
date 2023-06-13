@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-server-env
+data:
+  NAME: "Gabriel Petrovick"
+  AGE: "33"
