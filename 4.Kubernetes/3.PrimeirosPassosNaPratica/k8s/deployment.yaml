@@ -28,7 +28,7 @@ spec:
               cpu: "0.03"
               memory: 20Mi
             limits: ## É o máximo (limite máximo que pode ser reservado)
-              cpu: "0.5"
+              cpu: "0.03"
               memory: 25Mi
 
           # FIM Resources

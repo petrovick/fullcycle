@@ -354,3 +354,125 @@ Com o k8s <1.8
 ```
 kubectl run -it --generator=run-pod/v1 fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://node-server-service/healthz"
 ```
+
+
+# Usando GKE
+
+Vinculando à conta Goggle
+
+```
+gcloud container clusters get-credentials full-cycle --region us-central1 --project fullcycle-390019
+```
+
+Para rodar todos os scripts no Google Kubernetes
+```
+kubectl apply -f ./k8s/
+```
+
+Alguns recursos não serão necessários então basta remover do cluster
+```
+kubectl delete replicaset node-server
+kubectl delete service node-server-service
+```
+
+Agora basta criar um service do tipo LoadBalancer para entrar em nossa aplicação
+```
+kubectl apply -f ./k8s/service.loadbalancer.yaml
+```
+
+### Instalando o Ingress no nosso k8s
+
+Como estamos usando o GKE(Google Cloud), vamos seguir os passos para o GKE (https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)
+
+No momento da escrita deste repositório o comando é:
+```
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml
+```
+
+Para lsitar os ingress(s) criados
+```
+kubectl get svc -n=ingress-nginx
+```
+
+## TLS
+
+Instalando o cert-manager no k8s
+```
+kubectl create clusterrolebinding cluster-admin-binding \
+    --clusterrole=cluster-admin \
+    --user=$(gcloud config get-value core/account)
+```
+
+### Instalando sem o helm
+
+```
+kubectl create namespace cert-manager
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.1.1/cert-manager.yaml
+```
+
+Listando os pods do cert-manager
+```
+kubectl get po -n cert-manager
+```
+
+Instalando o certificado através do yaml
+```
+kubectl apply -f ./k8s/cluster-issuer.yaml
+kubectl apply -f ./k8s/ingress.yaml
+```
+
+
+Verificar se o certifica do está instalado corretamente
+```
+kubectl get certificates
+```
+
+
+
+# Namespaces
+
+Criando namespaces chamado dev
+```
+kubectl create ns dev
+```
+
+Todos os comandos daqui pra frente devem acontecer dentro do namespace criado
+Ex:
+```
+kubectl apply -f ARQUIVO -n=dev
+```
+
+## Trabalhando com Contextos diferentes (dev, prod, ...etc)
+```
+kubectl config set-context dev --namespace=dev --cluster=kind-fullcycle --user=kind-fullcycle
+kubectl config set-context prod --namespace=prod --cluster=kind-fullcycle --user=kind-fullcycle
+```
+
+Alterando para contexto dev
+```
+kubectl config use-context dev
+```
+
+Alterando para contexto prod
+```
+kubectl config use-context prod
+```
+
+
+## Service Accounts
+
+Controlar permissão dentro do cluster k8s. O ideal é criar um serviceaccount por projeto.
+
+```
+kubectl get serviceaccounts
+```
+
+```
+kubectl apply -f ./k8s/namespaces/deployment.yaml
+kubectl apply -f ./k8s/namespaces/security.yaml
+```
+

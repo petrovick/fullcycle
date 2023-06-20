@@ -5,7 +5,7 @@ metadata:
 spec:
   selector: # Filtra o pod que será associado à esse service
     app: node-server
-  type: NodePort # Opções:  ClusterIP NodePort, LoadBalancer, Headless Service
+  type: ClusterIP # Opções:  ClusterIP NodePort, LoadBalancer, Headless Service
   ports:
   - name:  node-server-service
     port: 80
