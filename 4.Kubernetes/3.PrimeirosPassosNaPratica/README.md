@@ -301,6 +301,8 @@ e adiciona
 
 nos args do "kind: Deployment" do arquivo, linha 115.
 
+Os arquivos e as mudanças estão no arquivo ./k8s/metrics.server.yaml
+
 ```
 kubectl get apiservices
 ```
