@@ -1,0 +1,14 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: oidc-bets
+config:
+  client_id: "kong"
+  client_secret: "Sb7cdsuERQRjJ47MWPnPRwKkv288MM9u" # Pega o client secret criando o real com o nome Bets, criar um usuário e um client com o nome kong, e pegar o client_secret de lá
+  discovery: "http://keycloak.iam/realms/bets/.well-known/openid-configuration" # keycloak.iam -> keycloak é o nome do service e iam o nome do namespace do k8s
+  introspection_endpoint: "http://keycloak.iam/realms/bets/protocol/openid-connect/token/introspect"
+  bearer_only: "yes"
+  bearer_jwt_auth_enable: "yes"
+  bearer_jwt_auth_allowed_auds:
+    - account
+plugin: oidc
