@@ -24,3 +24,11 @@ De forma geral é muito mais comum utilizar o Histogram
 ## PromQL
 
 Prometheus Query Language (SQL do Prometheus)
+
+
+## Rodando o Prometheus
+
+```
+cd CodigoFonte
+docker-compose up -d 
+```
