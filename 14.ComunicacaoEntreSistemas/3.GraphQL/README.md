@@ -1,8 +1,10 @@
 
 
 ```
-docker build -t graphgo .
+docker build -t graphgo:latest .
 docker run --rm -it -v $(pwd)/:/usr/src/app graphgo bash
+ou
+docker run --rm -it graphgo:latest bash
 ```
 
 ```
