@@ -1,9 +1,6 @@
 import Product from "../entity/product";
 import ProductService from "./product.service";
 
-import util from 'util'
-const setTimeoutPromise = util.promisify(setTimeout)
-
 describe("Product service unit tests", () => {
   it("should change the prices of all products", async () => {
     const product1 = new Product("product1", "Product 1", 10);
