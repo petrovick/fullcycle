@@ -1,5 +1,12 @@
+```
+docker-compose up -d
+```
 
-docker build -t appproduct .
-
-
+```
 docker exec -it appproduct bash
+```
+
+```
+apt-get update
+mockgen -destination=application/mocks/applicatin.go -source=application/product.go
+```
