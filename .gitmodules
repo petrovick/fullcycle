@@ -1,7 +1,6 @@
 # [submodule "CodigoFonteArquiteturaHexagonal"]
 # 	path = 20.ArquiteturaHexagonal/1.CodigoFonte
 # 	url = https://github.com/codeedu/fc2-arquitetura-hexagonal
-
-# [submodule "CodigoFonteCleanArchitecture"]
-# 	path = 21.CleanArchitecture/1.CodigoFonte
-# 	url = https://github.com/devfullcycle/fc-clean-architecture
+[submodule "21.CleanArquitecture/2.CleanArchitecture"]
+	path = 21.CleanArquitecture/2.CleanArchitecture
+	url = git@github.com:petrovick/fc-clean-architecture-ts.git
