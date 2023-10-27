@@ -11,3 +11,6 @@
 #	path = 22.Monolito/1.CodigoFonte
 #	url = git@github.com:devfullcycle/fc-monolito.git
 
+[submodule "20.ArquiteturaHexagonal/1.CodigoFonte2"]
+	path = 20.ArquiteturaHexagonal/1.CodigoFonte2
+	url = https://github.com/codeedu/fc2-arquitetura-hexagonal
