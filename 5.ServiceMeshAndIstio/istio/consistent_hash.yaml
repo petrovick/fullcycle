@@ -1,0 +1,48 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-vs
+spec:
+  hosts:
+  - nginx-service
+  http:
+    - route:
+      - destination:
+          host: nginx-service
+          subset: all # v1
+        # weight: 30
+      # - destination:
+      #     host: nginx-service
+      #     subset: v2
+      #   weight: 70
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: nginx-dr
+spec:
+  host: nginx-service
+  # trafficPolicy: # Aqui é global para todos os subsets abaixo
+  #   loadBalancer:
+  #     simple: ROUND_ROBIN
+  subsets:
+    - name: all # v1
+      labels:
+        app: nginx # version: A # Divide entre todos os pods A, se for 8, escolhe 1 entre os 8
+      # trafficPolicy: # Aqui é somente para o pod A
+      #   loadBalancer:
+      #     simple: RANDOM
+    # - name: v2
+    #   labels:
+    #     version: B # Divide entre todos os pods B, se for 18, escolhe 1 entre os 18
+    #   trafficPolicy: # Aqui é somente para o pod B
+    #     loadBalancer:
+    #       simple: LEAST_CONN
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: "x-user"
+
+        # Até o momento não é possível trabalhar com diferentes versão para trabalhar strict sessions (Existe um MR no Istio que ainda não foi resolvido)

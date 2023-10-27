@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: server
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole # Role ou ClusterRole -> ClusterRole aplica ao cluster inteiro e não ao namespace
+metadata:
+  name: server-read # server é referência à linha 4(Só pra facilitar mesmo)
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "watch", "list"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding # RoleBinding ou ClusterRoleBinding -> ClusterRoleBinding aplica ao cluster inteiro e não ao namespace
+metadata:
+  name: server-read-bind
+subjects:
+- kind: ServiceAccount
+  name: server
+  namespace: prod
+roleRef:
+  kind: Role
+  name: server-read # Aitribui o role para o Role criado na linha 11
+  apiGroup: rbac.authorization.k8s.io

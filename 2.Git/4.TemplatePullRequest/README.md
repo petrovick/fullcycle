@@ -1,0 +1,1 @@
+Foi adicionado um PULL_REQUEST_TEMPLATE.md na base do projeto.

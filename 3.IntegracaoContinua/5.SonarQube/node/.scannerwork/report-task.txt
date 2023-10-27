@@ -1,0 +1,6 @@
+projectKey=node-test
+serverUrl=http://host.docker.internal:9000
+serverVersion=10.0.0.68432
+dashboardUrl=http://host.docker.internal:9000/dashboard?id=node-test
+ceTaskId=AYicJzrvZqQD0DP3mzpv
+ceTaskUrl=http://host.docker.internal:9000/api/ce/task?id=AYicJzrvZqQD0DP3mzpv

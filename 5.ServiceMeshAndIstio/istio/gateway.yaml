@@ -1,0 +1,70 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ingress-gateway-k3s
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port: 
+        number: 80
+        name: http
+        protocol: http2
+      hosts:
+      - "*" # site.com.br ou *.site.com.br
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-vs
+spec:
+  hosts: 
+  - "*"
+  gateways:
+    - "ingress-gateway-k3s"
+  http:
+    - match:
+      - uri:
+          prefix: "/b" # redireciona localhost:8000/b para a v2
+      route: 
+      - destination:
+          host: nginx-service
+          subset: v2
+          
+    - match:
+      - uri:
+          prefix: "/" # redireciona localhost:8000/ para a v1
+      route: 
+      - destination:
+          host: nginx-service
+          subset: v1
+
+    # - route:  
+    #   - destination:
+    #       host: nginx-service
+    #       subset: v1
+    #     weight: 50
+    #   - destination:
+    #       host: nginx-service
+    #       subset: v2
+    #     weight: 50
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: nginx-dr
+spec:
+  host: nginx-service
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
+  subsets:
+    - name: v1
+      labels:
+        version: A
+      trafficPolicy:
+        loadBalancer:
+          simple: LEAST_CONN
+    - name: v2
+      labels:
+        version: B

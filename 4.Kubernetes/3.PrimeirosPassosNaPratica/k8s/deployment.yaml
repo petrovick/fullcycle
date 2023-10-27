@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-server
+  labels:
+    name: node-server
+spec:
+  selector:
+    matchLabels:
+      app: "node-server"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node-server
+    spec:
+      containers:
+        - name: node-server
+          image: petrovick/hello-node:v7.9
+
+          # INÍCIO Resources
+          ## cpu vai executar 1 vCPU -> 1000m (milicores) 500. 0.5
+          ## 3 vCPU => 3000m
+          ## Lembrando que isso é para 1 replica, se houver mais réplicas, basta multiplicar
+
+          resources:
+            requests: ## É o mínimo (reservado)
+              cpu: "0.03"
+              memory: 100Mi
+            limits: ## É o máximo (limite máximo que pode ser reservado)
+              cpu: "0.5"
+              memory: 250Mi
+
+          # FIM Resources
+
+          # Início Healthcheck
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8000 # Porta do Container
+            periodSeconds: 3
+            failureThreshold: 1 # Quantas vezes precisa falar que minha aplicação não está pronta
+            initialDelaySeconds: 5 # Aguarda x segundos até começar a verificar se o container está pronto
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000 # Porta do Container
+            periodSeconds: 3
+            failureThreshold: 1 # Quantas vezes precisa falar que minha aplicação não está pronta
+            # initialDelaySeconds: 10 # Aguarda x segundos até começar a verificar se o container está pronto
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000 # Porta do Container
+            periodSeconds: 5
+            failureThreshold: 1 # Quantas vezes tem que dar erro para reiniciar o serviço
+            timeoutSeconds: 1 # Tempo de resposta da requisição para o container estar OK (Tempo de resposta do healthcheck)
+            successThreshold: 1 # Quantas vezes tem que testar para a aplicação estar OK
+            # initialDelaySeconds: 15 # Aguarda x segundos até começar a verificar se o container está pronto
+
+            # FIM Início Healthcheck
+
+          envFrom:
+            - configMapRef:
+                name: node-server-env
+            - secretRef:
+                name: node-server-secret
+
+          volumeMounts:
+            - mountPath: "/myfamily"
+              name: config
+              readOnly: true
+            - mountPath: "/pvc"
+              name: node-server-volume
+
+      volumes:
+        - name: node-server-volume
+          persistentVolumeClaim:
+            claimName: node-server-pvc
+
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+              - key: members
+                path: "family.txt"
+              - key: members2
+                path: "config.json"
+
+          ## Forma 1
+          # envFrom:
+          #   - configMapRef:
+          #       name: node-server-env
+
+          ## Forma 2
+          # env:
+            # - name: NAME
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: node-server-env
+            #       key: NAME
+
+            # - name: AGE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: node-server-env
+            #       key: AGE

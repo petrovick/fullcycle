@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-server-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    name: node-server
+    kind: Deployment
+  minReplicas: 2 # Em produção NUNCA utilizar 1, porque se cair essa replica o serviço fica fora
+  maxReplicas: 30
+  targetCPUUtilizationPercentage: 10
+  # metrics:
+  # - type: Resource
+  #   resource:
+  #     name: cpu
+  #     target:
+  #       type: Utilization
+  #       averageUtilization: 25
