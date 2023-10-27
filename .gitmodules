@@ -17,3 +17,6 @@
 [submodule "21.CleanArquitecture/2.CleanArchitecture2"]
 	path = 21.CleanArquitecture/2.CleanArchitecture2
 	url = git@github.com:petrovick/fc-clean-architecture-ts.git
+[submodule "21.CleanArquitecture/1.CodigoFonte2"]
+	path = 21.CleanArquitecture/1.CodigoFonte2
+	url = git@github.com:devfullcycle/fc-clean-architecture.git
