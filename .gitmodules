@@ -20,3 +20,6 @@
 [submodule "21.CleanArquitecture/1.CodigoFonte2"]
 	path = 21.CleanArquitecture/1.CodigoFonte2
 	url = git@github.com:devfullcycle/fc-clean-architecture.git
+[submodule "22.Monolito/1.CodigoFonte2"]
+	path = 22.Monolito/1.CodigoFonte2
+	url = git@github.com:devfullcycle/fc-monolito.git
