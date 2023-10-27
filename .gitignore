@@ -1,4 +1,8 @@
 mysql
 node_modules
+<<<<<<< HEAD
 dist
 .git.bkp
+=======
+dist
+>>>>>>> 1137367105f04097d08c0cbbe19eb525ead34c9e

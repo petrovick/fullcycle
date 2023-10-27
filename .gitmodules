@@ -1,6 +1,7 @@
 # [submodule "CodigoFonteArquiteturaHexagonal"]
 # 	path = 20.ArquiteturaHexagonal/1.CodigoFonte
 # 	url = https://github.com/codeedu/fc2-arquitetura-hexagonal
+<<<<<<< HEAD
 [submodule "21.CleanArquitecture/2.CleanArchitecture"]
 	path = 21.CleanArquitecture/2.CleanArchitecture
 	url = git@github.com:petrovick/fc-clean-architecture-ts.git
@@ -10,4 +11,15 @@
 [submodule "22.Monolito/1.CodigoFonte"]
 	path = 22.Monolito/1.CodigoFonte
 	url = git@github.com:devfullcycle/fc-monolito.git
+=======
+#[submodule "21.CleanArquitecture/2.CleanArchitecture"]
+#	path = 21.CleanArquitecture/2.CleanArchitecture
+#	url = git@github.com:petrovick/fc-clean-architecture-ts.git
+#[submodule "21.CleanArquitecture/1.CodigoFonte"]
+#	path = 21.CleanArquitecture/1.CodigoFonte
+#	url = git@github.com:devfullcycle/fc-clean-architecture.git
+#[submodule "22.Monolito/1.CodigoFonte"]
+#	path = 22.Monolito/1.CodigoFonte
+#	url = git@github.com:devfullcycle/fc-monolito.git
+>>>>>>> 1137367105f04097d08c0cbbe19eb525ead34c9e
 

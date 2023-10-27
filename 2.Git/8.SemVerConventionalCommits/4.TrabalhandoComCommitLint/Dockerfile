@@ -2,11 +2,8 @@ FROM node:15
 
 WORKDIR /usr/src/app
 
-<<<<<<< HEAD
 COPY . .
 
-=======
->>>>>>> 1137367105f04097d08c0cbbe19eb525ead34c9e
 EXPOSE 3000
 
 CMD ["node", "index.js"]
