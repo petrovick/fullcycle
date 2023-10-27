@@ -1,10 +1,24 @@
 @startuml Container
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v16.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/BusinessApplications/all.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+!include AWSPuml/Analytics/KinesisDataStreams.puml
+!include AWSPuml/ApplicationIntegration/SimpleQueueService.puml
+!include AWSPuml/ApplicationIntegration/SimpleNotificationService.puml
+
 AddRelTag("async", $lineStyle = DashedLine())
 
 title "Digital Wallet Full Cycle"
 Person(client, "Client", "Digital Wallet User")
 System_Ext(payment_gateway, "Payment Gateway", "Payment Processor")
+
+SimpleStorageService(storageAlias, "Label", "Technology", "Optional Description")
+KinesisDataStreams(eventStream, "IoT Events", "2 shards")
+SimpleQueueService(errorQueue, "Rule Error Queue", "failed Rule actions")
+SimpleNotificationService(errorQueue2, "Rule Error Queue 2", "failed Rule actions 2")
 
 System_Boundary(digital_wallet, "Digital Wallet") {
     Container(spa, "SPA", "React", "Digital Wallet Web App")
