@@ -23,3 +23,6 @@
 [submodule "22.Monolito/1.CodigoFonte2"]
 	path = 22.Monolito/1.CodigoFonte2
 	url = git@github.com:devfullcycle/fc-monolito.git
+[submodule "1.Docker/6.Desafio/GoLang2"]
+	path = 1.Docker/6.Desafio/GoLang2
+	url = git@github.com:petrovick/fullcycle-docker-golang-challenge1.git

@@ -1,5 +1,5 @@
 @startuml Context_Diagram
-!include !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
 title "Digital Wallet Full Cycle"
 Person(client, "Client", "Digital Wallet User")
