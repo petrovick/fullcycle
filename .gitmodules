@@ -26,3 +26,9 @@
 [submodule "1.Docker/6.Desafio/GoLang2"]
 	path = 1.Docker/6.Desafio/GoLang2
 	url = git@github.com:petrovick/fullcycle-docker-golang-challenge1.git
+[submodule "24.EventDrivenDesign/1.CodigoFonte"]
+	path = 24.EventDrivenDesign/1.CodigoFonte
+	url = git@github.com:devfullcycle/fc-eda.git
+[submodule "25.APIGateway/1.CodigoFonte"]
+	path = 25.APIGateway/1.CodigoFonte
+	url = https://github.com/petrovick/FC3-admin-catalogo-de-videos-api-gateway.git
