@@ -1,5 +1,11 @@
 ## API Gateway
 
+## Rodando o docker-compose do kong
+
+```
+docker-compose -f compose/kong_compose.yml up -d
+```
+
 ### Quais são as funcionalidades?
 - Rate limiting
 - Autenticação/Autorização de maneira padronizada
