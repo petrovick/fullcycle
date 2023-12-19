@@ -32,3 +32,15 @@
 [submodule "25.APIGateway/1.CodigoFonte"]
 	path = 25.APIGateway/1.CodigoFonte
 	url = https://github.com/petrovick/FC3-admin-catalogo-de-videos-api-gateway.git
+[submodule "27.ApacheKafka/3.ConsumerProducer"]
+	path = 27.ApacheKafka/3.ConsumerProducer
+	url = git@github.com:petrovick/fc2-gokafka.git
+[submodule "27.ApacheKafka/4.Connect"]
+	path = 27.ApacheKafka/4.Connect
+	url = https://github.com/petrovick/fc2-kafka-connect
+[submodule "17.AutenticacaoEKeycloak/2.ConceitosBasicos"]
+	path = 17.AutenticacaoEKeycloak/2.ConceitosBasicos
+	url = git@github.com:petrovick/fc-keycloak.git
+[submodule "17.AutenticacaoEKeycloak/4.FluxoDeAutenticacao"]
+	path = 17.AutenticacaoEKeycloak/4.FluxoDeAutenticacao
+	url = git@github.com:petrovick/fc-keycloak.git
