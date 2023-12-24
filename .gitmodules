@@ -39,8 +39,8 @@
 	path = 27.ApacheKafka/4.Connect
 	url = https://github.com/petrovick/fc2-kafka-connect
 [submodule "17.AutenticacaoEKeycloak/2.ConceitosBasicos"]
-	path = 17.AutenticacaoEKeycloak/2.ConceitosBasicos
+	path = 28.AutenticacaoEKeycloak/2.ConceitosBasicos/2.ConceitosBasicos
 	url = git@github.com:petrovick/fc-keycloak.git
 [submodule "17.AutenticacaoEKeycloak/4.FluxoDeAutenticacao"]
-	path = 17.AutenticacaoEKeycloak/4.FluxoDeAutenticacao
+	path = 28.AutenticacaoEKeycloak/4.FluxoDeAutenticacao/4.FluxoDeAutenticacao
 	url = git@github.com:petrovick/fc-keycloak.git
